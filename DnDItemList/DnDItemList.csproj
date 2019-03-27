@@ -46,7 +46,7 @@
     <Compile Include="Weapon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="NewWeapon.cs" />
+    <Compile Include="FileFunctions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
