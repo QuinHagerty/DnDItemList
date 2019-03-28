@@ -9,13 +9,8 @@ namespace DnDItemList
 {
     class ReadWrite
     {
-        public static List<Weapon> ViewData(string fileName)
+        public static List<Weapon> ReadData(string fileName, List<Weapon>DnDWeaponList)
         {
-
-            //List<Weapon> fileContents = ReadWrite.ViewData(fileName);
-
-            List<Weapon> DnDWeaponList = new List<Weapon>();
-
             using (var reader = new StreamReader(fileName))
             {
                 while (!reader.EndOfStream)
@@ -35,30 +30,15 @@ namespace DnDItemList
                     };
                     DnDWeaponList.Add(Weapon);
                 }
-                foreach (Weapon weapon in DnDWeaponList)
-                {
-                    Console.Write(
-                    weapon.Name + "," +
-                    weapon.Category + "," +
-                    weapon.Damage + "," +
-                    weapon.DamageType + "," +
-                    weapon.ItemRarity + "," +
-                    weapon.Properties + "," +
-                    weapon.Range + "," +
-                    weapon.Weight +
-                    Environment.NewLine);
-                }
             }
             return DnDWeaponList;
         }
 
-        public static void AddData(List<Weapon> NewWeapons, string path)
+        public static List<Weapon> ViewData(string fileName, List<Weapon> DnDWeaponList)
         {
-            string WeaponString = string.Empty;
-
-            foreach (Weapon weapon in NewWeapons)
+            foreach (Weapon weapon in DnDWeaponList)
             {
-                WeaponString +=
+                Console.Write(
                 weapon.Name + "," +
                 weapon.Category + "," +
                 weapon.Damage + "," +
@@ -67,12 +47,12 @@ namespace DnDItemList
                 weapon.Properties + "," +
                 weapon.Range + "," +
                 weapon.Weight +
-                Environment.NewLine;
+                Environment.NewLine);
             }
-            File.WriteAllText(path, WeaponString);
+            return DnDWeaponList;
         }
 
-        private static List<Weapon> AddData(List<Weapon> fileContents)
+        public static List<Weapon> AddData(string fileName, List<Weapon> DnDWeaponList)
         {
             var newWeapon = new Weapon();
             Console.WriteLine("Enter new weapon name: ");
@@ -92,8 +72,18 @@ namespace DnDItemList
             Console.WriteLine("Enter " + newWeapon.Name + " Weight");
             newWeapon.Weight = Console.ReadLine();
 
-            fileContents.Add(newWeapon);
-            return fileContents;
+            DnDWeaponList.Add(newWeapon);
+            return DnDWeaponList;
+        }
+
+        public static void EditData(List<Weapon> NewWeapons, string path)
+        {
+            string WeaponString = string.Empty;
+
+            foreach (Weapon weapon in NewWeapons)
+            {
+
+            }
         }
 
     }
