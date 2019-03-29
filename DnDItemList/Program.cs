@@ -11,11 +11,11 @@ namespace DnDItemList
     {
         public static void Main(string[] args)
         {
-            var fileName = @"C: \Users\hager\Desktop\DnDItemList\DnDItemListCSV.csv";
+            var fileName = @"C:\Users\hager\Desktop\DnDItemList\DnDItemListCSV.csv";
             List<Weapon> DnDWeaponList = new List<Weapon>();
             ReadWrite.ReadData(fileName, DnDWeaponList);
-
-            while (true)
+            var Done = false;
+            while (!Done)
             {
                 Console.WriteLine("Welcome to the DnD 5E item database");
                 Console.WriteLine("Would you like to 1. View the items, 2. add an item,  3. edit an existing item, or 4. Quit? Please type the number of your option.");
@@ -26,19 +26,21 @@ namespace DnDItemList
                 switch (userNumber)
                 {
                     case 1:
-                        ReadWrite.ViewData(fileName, DnDWeaponList);
+                        ReadWrite.ViewData(DnDWeaponList);
                         break;
                     case 2:
-                        ReadWrite.AddData(fileName, DnDWeaponList);
+                        ReadWrite.AddData(DnDWeaponList);
                         break;
                     //case 3:
                     //    ReadWrite.EditData();
                     //    break;
                     case 4:
-                        return;
+                        Done = true;
+                        break;
                 }
-                //Console.ReadLine();
+                ReadWrite.WriteData(fileName, DnDWeaponList);
             }
+            //ReadWrite.WriteData(fileName, DnDWeaponList);
         }
     }
 }

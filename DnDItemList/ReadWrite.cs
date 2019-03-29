@@ -34,7 +34,7 @@ namespace DnDItemList
             return DnDWeaponList;
         }
 
-        public static List<Weapon> ViewData(string fileName, List<Weapon> DnDWeaponList)
+        public static List<Weapon> ViewData(List<Weapon> DnDWeaponList)
         {
             foreach (Weapon weapon in DnDWeaponList)
             {
@@ -52,7 +52,7 @@ namespace DnDItemList
             return DnDWeaponList;
         }
 
-        public static List<Weapon> AddData(string fileName, List<Weapon> DnDWeaponList)
+        public static List<Weapon> AddData(List<Weapon> DnDWeaponList)
         {
             var newWeapon = new Weapon();
             Console.WriteLine("Enter new weapon name: ");
@@ -86,5 +86,46 @@ namespace DnDItemList
             }
         }
 
+        public static void WriteData(string fileName, List<Weapon> DnDWeaponList)
+        {
+            using (var streamWriter = new StreamWriter(fileName))
+            {
+                string WeaponString = string.Empty;
+
+                foreach (Weapon weapon in DnDWeaponList)
+                {
+                    WeaponString +=
+                    weapon.Name + "," +
+                    weapon.Category + "," +
+                    weapon.Damage + "," +
+                    weapon.DamageType + "," +
+                    weapon.ItemRarity + "," +
+                    weapon.Properties + "," +
+                    weapon.Range + "," +
+                    weapon.Weight +
+                    Environment.NewLine;
+                }
+                File.WriteAllText(fileName, WeaponString);
+                Console.WriteLine("Log: " + WeaponString);
+            }
+        }
+
     }
 }
+
+//string WeaponString = string.Empty;
+
+//           foreach (Weapon weapon in NewWeapons)
+//           {
+//               WeaponString +=
+//               weapon.Name + "," +
+//               weapon.Category + "," +
+//               weapon.Damage + "," +
+//               weapon.DamageType + "," +
+//               weapon.ItemRarity + "," +
+//               weapon.Properties + "," +
+//               weapon.Range + "," +
+//               weapon.Weight +
+//               Environment.NewLine;
+//           }
+//           File.WriteAllText(path, WeaponString);
