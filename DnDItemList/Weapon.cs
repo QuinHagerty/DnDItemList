@@ -16,5 +16,17 @@ namespace DnDItemList
         public string Properties;
         public string Range;
         public string Weight;
+
+        public string AsString()
+        {
+            return this.Name + "," +
+            this.Category + "," +
+            this.Damage + "," +
+            this.DamageType + "," +
+            this.ItemRarity + "," +
+            this.Properties + "," +
+            this.Range + "," +
+            this.Weight;
+        }
     }
 }

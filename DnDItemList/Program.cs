@@ -31,16 +31,15 @@ namespace DnDItemList
                     case 2:
                         ReadWrite.AddData(DnDWeaponList);
                         break;
-                    //case 3:
-                    //    ReadWrite.EditData();
-                    //    break;
+                    case 3:
+                        ReadWrite.EditData(DnDWeaponList, fileName);
+                        break;
                     case 4:
                         Done = true;
                         break;
                 }
                 ReadWrite.WriteData(fileName, DnDWeaponList);
             }
-            //ReadWrite.WriteData(fileName, DnDWeaponList);
         }
     }
 }

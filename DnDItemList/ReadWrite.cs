@@ -31,6 +31,7 @@ namespace DnDItemList
                     DnDWeaponList.Add(Weapon);
                 }
             }
+            
             return DnDWeaponList;
         }
 
@@ -38,16 +39,7 @@ namespace DnDItemList
         {
             foreach (Weapon weapon in DnDWeaponList)
             {
-                Console.Write(
-                weapon.Name + "," +
-                weapon.Category + "," +
-                weapon.Damage + "," +
-                weapon.DamageType + "," +
-                weapon.ItemRarity + "," +
-                weapon.Properties + "," +
-                weapon.Range + "," +
-                weapon.Weight +
-                Environment.NewLine);
+                Console.WriteLine(weapon.AsString());
             }
             return DnDWeaponList;
         }
@@ -55,6 +47,37 @@ namespace DnDItemList
         public static List<Weapon> AddData(List<Weapon> DnDWeaponList)
         {
             var newWeapon = new Weapon();
+            EditWeapon(newWeapon);
+
+            DnDWeaponList.Add(newWeapon);
+            return DnDWeaponList;
+        }
+
+        public static void EditData(List<Weapon> DnDWeaponList, string path)
+        {
+            Console.WriteLine("What is the name of the item you wish to edit?");
+            var editItem = Console.ReadLine();
+            Weapon tmp = null;
+
+            foreach (Weapon weapon in DnDWeaponList)
+            {
+                if (weapon.Name == editItem)
+                {
+                    tmp = weapon;
+                    break;
+                }
+            }
+            if(tmp == null)
+            {
+                // ERROR MSG
+                return;
+            }
+            Console.WriteLine(tmp.AsString());
+            EditWeapon(tmp);
+        }
+
+        public static void EditWeapon(Weapon newWeapon)
+        {
             Console.WriteLine("Enter new weapon name: ");
             newWeapon.Name = Console.ReadLine();
             Console.WriteLine("Enter " + newWeapon.Name + " Category");
@@ -71,26 +94,12 @@ namespace DnDItemList
             newWeapon.Range = Console.ReadLine();
             Console.WriteLine("Enter " + newWeapon.Name + " Weight");
             newWeapon.Weight = Console.ReadLine();
-
-            DnDWeaponList.Add(newWeapon);
-            return DnDWeaponList;
         }
 
-        public static void EditData(List<Weapon> NewWeapons, string path)
-        {
-            string WeaponString = string.Empty;
-
-            foreach (Weapon weapon in NewWeapons)
-            {
-
-            }
-        }
 
         public static void WriteData(string fileName, List<Weapon> DnDWeaponList)
         {
-            using (var streamWriter = new StreamWriter(fileName))
-            {
-                string WeaponString = string.Empty;
+            string WeaponString = string.Empty;
 
                 foreach (Weapon weapon in DnDWeaponList)
                 {
@@ -105,11 +114,8 @@ namespace DnDItemList
                     weapon.Weight +
                     Environment.NewLine;
                 }
-                File.WriteAllText(fileName, WeaponString);
-                Console.WriteLine("Log: " + WeaponString);
-            }
+            File.WriteAllText(fileName, WeaponString);
         }
-
     }
 }
 
