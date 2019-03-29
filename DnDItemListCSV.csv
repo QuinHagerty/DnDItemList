@@ -1,5 +1,10 @@
-1,1,1,1,1,1,1,1
-2,2,2,2,2,2,2,2
-7,7,7,7,7,7,7,7
-4,4,4,4,4,4,4,4
-5,5,5,5,5,5,5,5
+Name,Category,Damage,Damage Type,Item Rarity,Properties,Range,Weight
+Blowgun,Items,1,Piercing,Standard,Loading Range,25/100,1
+Dart,Items,1d4,Piercing,Standard,Finesse Range Thrown,20/60,.25
+Hand Crossbow,Items,1d6,Piercing,Standard,Light Loading Range,30/120,3
+Heavy Crossbow,Items,1d10,Piercing,Standard,Heavy Loading Range Two-Handed,100/400,18
+Light Crossbow,Items,1d8,Piercing,Standard,Loading Range Two-Handed,80/320,5
+Longbow,Items,1d8,Piercing,Standard,Ammunition Heavy Range Two-Handed,150/600,2
+Oathbow,Items,1d8,Piercing,Very Rare,Heavy Range Two-Handed,150/600,2
+Shortbow,Items,1d6,Piercing,Standard,Ammunition Range Two-Handed,80/320,2
+Longsword,Items,1d8,Slashing,Standard,Versatile,Melee,3
