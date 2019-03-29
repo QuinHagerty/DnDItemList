@@ -15,6 +15,7 @@ namespace DnDItemList
             List<Weapon> DnDWeaponList = new List<Weapon>();
             ReadWrite.ReadData(fileName, DnDWeaponList);
             var Done = false;
+            //This while loop keeps the application running until the user quits. Within it are the options to view, add, and edit the data. 
             while (!Done)
             {
                 Console.WriteLine("Welcome to the DnD 5E item database");
