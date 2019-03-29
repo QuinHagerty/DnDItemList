@@ -11,7 +11,7 @@ namespace DnDItemList
     {
         public static void Main(string[] args)
         {
-            var fileName = @"C:\Users\hager\Desktop\DnDItemList\DnDItemListCSV.csv";
+            var fileName = @"..\..\..\DnDItemListCSV.csv";
             List<Weapon> DnDWeaponList = new List<Weapon>();
             ReadWrite.ReadData(fileName, DnDWeaponList);
             var Done = false;
